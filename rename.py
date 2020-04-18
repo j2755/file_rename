@@ -4,7 +4,7 @@ import pathlib
 
 class Rename:
 	def __init__(self,directory):
-		self.self.directory=self.directory
+		self.directory=directory
 
 	def find_all_files_in_select_self.directory(self):
 		return  [f for f in os.listdir(self.directory) if os.path.isfile(os.path.join(self.directory, f))]
@@ -22,7 +22,7 @@ class Rename:
 
 
 	def rename_files_as_sequence(self):
-		files=find_all_files_in_select_self.directory(self.directory)
+		files=self.find_all_files_in_select_directory(self.directory)
 		i=1
 		for file in files:
 
@@ -36,7 +36,7 @@ class Rename:
 
 	def rename_files_relative_to_base_file(self):
 		basename=os.path.basename(self.directory)
-		files=find_all_files_in_select_self.directory(self.directory)
+		files=self.find_all_files_in_select_self.directory(self.directory)
 		i=1
 		for file in files:
 			full_name=self.directory+'\\'+file
