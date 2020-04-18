@@ -30,7 +30,7 @@ class Rename:
 
             os.rename(full_name, self.directory+'\\'+str(i)+splitted_file[1])
             i += 1
-    def rename_files_of_specific_type__relative_to_base_file(self,file_type):
+    def rename_files_of_specific_type_relative_to_base_file(self,file_type):
     	basename = os.path.basename(self.directory)
         total_files=self.find_all_files_of_type_in_select_directory(file_type)
         files, index = self.return_tuple_of_unformatted_files_and_largest_index(
