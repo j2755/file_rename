@@ -30,12 +30,11 @@ class Rename:
 
             os.rename(full_name, self.directory+'\\'+str(i)+splitted_file[1])
             i += 1
-
-    def rename_files_relative_to_base_file(self):
-        # only works once initially, otherwise it will try to give multiple files the same name
-        basename = os.path.basename(self.directory)
+    def rename_files_of_specific_type__relative_to_base_file(self,file_type):
+    	basename = os.path.basename(self.directory)
+        total_files=self.find_all_files_of_type_in_select_directory(file_type)
         files, index = self.return_tuple_of_unformatted_files_and_largest_index(
-            basename)
+            total_filesfiles,basename)
         i = index+1
         for file in files:
             full_name = self.directory+'\\'+file
@@ -44,8 +43,21 @@ class Rename:
                       basename+'_'+str(i)+splitted_file[1])
             i += 1
 
-    def return_tuple_of_unformatted_files_and_largest_index(self, base_file_name):
-        files = self.find_all_files_in_select_directory()
+    def rename_files_relative_to_base_file(self):
+        # only works once initially, otherwise it will try to give multiple files the same name
+        basename = os.path.basename(self.directory)
+        total_files=self.find_all_files_in_select_directory()
+        files, index = self.return_tuple_of_unformatted_files_and_largest_index(
+            total_files,basename)
+        i = index+1
+        for file in files:
+            full_name = self.directory+'\\'+file
+            splitted_file = os.path.splitext(file)
+            os.rename(full_name, self.directory+'\\' +
+                      basename+'_'+str(i)+splitted_file[1])
+            i += 1
+
+    def return_tuple_of_unformatted_files_and_largest_index(self,files, base_file_name):
         new_files = []
         files_and_index = (None, 1)
         for file in files:
